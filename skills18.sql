@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.9.0.1
+-- version 5.0.1
 -- https://www.phpmyadmin.net/
 --
--- Servidor: localhost
--- Tiempo de generación: 11-02-2020 a las 15:34:43
--- Versión del servidor: 10.4.6-MariaDB
--- Versión de PHP: 7.3.9
+-- Servidor: 127.0.0.1
+-- Tiempo de generación: 12-02-2020 a las 00:45:16
+-- Versión del servidor: 10.4.11-MariaDB
+-- Versión de PHP: 7.4.2
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -47,14 +47,6 @@ CREATE TABLE `messages` (
   `content` varchar(1000) COLLATE utf8mb4_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
---
--- Volcado de datos para la tabla `messages`
---
-
-INSERT INTO `messages` (`id`, `author`, `date`, `content`) VALUES
-(1, 1, '2020-02-10 15:59:11', 'aweasdsad'),
-(2, 1, '2020-02-10 16:18:01', 'dfgsdfg');
-
 -- --------------------------------------------------------
 
 --
@@ -65,7 +57,7 @@ CREATE TABLE `users` (
   `id` int(11) NOT NULL,
   `name` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
   `email` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `password` char(60) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `password` varchar(4096) COLLATE utf8mb4_unicode_ci NOT NULL,
   `role` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
@@ -74,7 +66,7 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `name`, `email`, `password`, `role`) VALUES
-(1, 'asdasd', NULL, '', NULL);
+(5, '33', '33@gmail.com', '$argon2id$v=19$m=65536,t=4,p=1$dFF0Snl4T3RxeDc1T1QweA$MQ2HorDgYJ3JN5sffX7ZkiXcJyt3FCavUtKYIWn55yc', 0);
 
 --
 -- Índices para tablas volcadas
@@ -123,7 +115,7 @@ ALTER TABLE `messages`
 -- AUTO_INCREMENT de la tabla `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- Restricciones para tablas volcadas
