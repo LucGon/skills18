@@ -12,10 +12,12 @@
         {% endfor %}
     </div>
     <div id="profile">
-        PROFILE
         {% if search %}
+            PROFILE
             <div class="message">{{ search[0].name }}</div>
             <div class="message">{{ search[0].id }}</div>
-        {%  endif%}
+        {% else%}
+        <p>user not found</p>
+        {% endif %}
     </div>
 {% endblock %}
