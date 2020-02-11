@@ -3,14 +3,15 @@
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Security\Core\User\UserInterface;
 
 /**
  * Users
- *
+ * @ORM\Entity(repositoryClass="App\Repository\CabronesRepository")
  * @ORM\Table(name="users", uniqueConstraints={@ORM\UniqueConstraint(name="user", columns={"name"}), @ORM\UniqueConstraint(name="email", columns={"email"})})
  * @ORM\Entity
  */
-class Users
+class Users implements UserInterface
 {
     /**
      * @var int
@@ -49,16 +50,26 @@ class Users
      */
     private $role = 'NULL';
 
+    /**
+     */
+    private $plainPassword;
+
+    private $roles = [];
+
     public function getId(): ?int
     {
         return $this->id;
+    }
+
+    public function getUserName(): ?string
+    {
+        return $this->name;
     }
 
     public function getName(): ?string
     {
         return $this->name;
     }
-
     public function setName(string $name): self
     {
         $this->name = $name;
@@ -101,6 +112,41 @@ class Users
 
         return $this;
     }
+    public function getPlainPassword()
+    {
+        return $this->plainPassword;
+    }
 
+    public function setPlainPassword($password)
+    {
+        $this->plainPassword = $password;
+    }
+    /**
+     * @see UserInterface
+     */
+    public function getSalt()
+    {
+        // not needed when using the "bcrypt" algorithm in security.yaml
+    }
 
+    /**
+     * @see UserInterface
+     */
+    public function eraseCredentials()
+    {
+        // If you store any temporary, sensitive data on the user, clear it here
+        // $this->plainPassword = null;
+    }
+    public function setRoles(string $role)
+    {
+        $this->roles[] = $role;
+    }
+    public function getRoles(): array
+    {
+        $roles = $this->roles;
+        // guarantee every user at least has ROLE_USER
+        $roles[] = 'ROLE_USER';
+
+        return array_unique($roles);
+    }
 }
