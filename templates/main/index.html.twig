@@ -1,0 +1,26 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Skills18{% endblock %}
+
+{% block body %}
+<div id="users">
+	USERS
+	{% for user in users %}
+		<div class="user">{{ user.name }}</div>
+	{%  else %}
+		<p>no users</p>
+	{% endfor %}
+</div>
+<div id="messages">
+	<form action="{{ path('search') }}" method="POST">
+		<input type="text" name="search">
+		<input type="submit" value="Search">
+	</form>
+	MESSAGES
+	{% for message in messages %}
+		<div class="message">{{ message.author.name }}: {{ message.content }}</div>
+	{%  else %}
+		<p>no messages</p>
+	{% endfor %}
+</div>
+{% endblock %}
