@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.0.1
+-- version 4.9.0.1
 -- https://www.phpmyadmin.net/
 --
--- Servidor: 127.0.0.1
--- Tiempo de generación: 12-02-2020 a las 00:45:16
--- Versión del servidor: 10.4.11-MariaDB
--- Versión de PHP: 7.4.2
+-- Servidor: localhost
+-- Tiempo de generación: 12-02-2020 a las 17:20:08
+-- Versión del servidor: 10.4.6-MariaDB
+-- Versión de PHP: 7.3.9
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -47,6 +47,14 @@ CREATE TABLE `messages` (
   `content` varchar(1000) COLLATE utf8mb4_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
+--
+-- Volcado de datos para la tabla `messages`
+--
+
+INSERT INTO `messages` (`id`, `author`, `date`, `content`) VALUES
+(1, 3, '2020-02-10 15:59:11', 'aweasdsad'),
+(2, 3, '2020-02-10 16:18:01', 'dfgsdfg');
+
 -- --------------------------------------------------------
 
 --
@@ -56,9 +64,9 @@ CREATE TABLE `messages` (
 CREATE TABLE `users` (
   `id` int(11) NOT NULL,
   `name` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `email` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `email` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
   `password` varchar(4096) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `role` int(11) DEFAULT NULL
+  `role` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
@@ -66,7 +74,12 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `name`, `email`, `password`, `role`) VALUES
-(5, '33', '33@gmail.com', '$argon2id$v=19$m=65536,t=4,p=1$dFF0Snl4T3RxeDc1T1QweA$MQ2HorDgYJ3JN5sffX7ZkiXcJyt3FCavUtKYIWn55yc', 0);
+(3, 'asd2', 'asd2@gmail.com', '$argon2id$v=19$m=65536,t=4,p=1$/u/w/5aIBmEDeFi7CkxGvg$lFWSziVhZ2lmsrDXsRc6ouAXL5afehK+enWANrzNdVE', 0),
+(4, '22', '22@gmail.com', '$argon2id$v=19$m=65536,t=4,p=1$BxFKFJOBlE+IO4d0qCGduw$9joSAEnePCicI7GQQfmfOoh+3EcnzClZ9HqJysIIeig', 0),
+(5, '55', '55@gmail.com', '$argon2id$v=19$m=65536,t=4,p=1$zpMABoO+/EjLM0IFk0YehQ$BDnadtZUxBoAB4QWFhGGTHV6ii8yHG+xjwl84AyRzmQ', 0),
+(8, '66', '66@gmail.com', '$argon2id$v=19$m=65536,t=4,p=1$U0gD9yG4muwP0x07BJWUXA$nktji+pPTQDjRxmgo6XWn1GaiNLpXaGC67liMNq7ljw', 0),
+(9, '77', '77@gmail.com', '$argon2id$v=19$m=65536,t=4,p=1$E5Ou55+73oNr0gHTlczTvA$r1RC9tMRbvudiFdRN8ICRQNECkrrIQk+FPFYeLfEoYc', 0),
+(10, '100', '100@gmail.com', '$argon2id$v=19$m=65536,t=4,p=1$Q7BezwVzjzce2TcMk6g+Zg$0bRDMwa20zQys21l3z0ouFbNWeIDKHIdj+LlgBA7IhY', 0);
 
 --
 -- Índices para tablas volcadas
@@ -115,7 +128,7 @@ ALTER TABLE `messages`
 -- AUTO_INCREMENT de la tabla `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- Restricciones para tablas volcadas
