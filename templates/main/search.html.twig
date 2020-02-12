@@ -1,23 +1,18 @@
 {% extends 'base.html.twig' %}
 
 {% block title %}Skills18{% endblock %}
-
 {% block body %}
-    <div id="users">
-        USERS
-        {% for user in users %}
-            <div class="user">{{ user.name }}</div>
-        {%  else %}
-            <p>no users</p>
-        {% endfor %}
-    </div>
-    <div id="profile">
-        {% if search %}
-            PROFILE
-            <div class="message">{{ search[0].name }}</div>
-            <div class="message">{{ search[0].id }}</div>
-        {% else%}
-        <p>user not found</p>
-        {% endif %}
+    {% include 'header.html' %}
+    <div id="main">
+        {% include 'sidebar.html' %}
+        <div id="profile" class="con">
+            {% if search %}
+                PROFILE
+                <div class="block">{{ search[0].name }}</div>
+                <div class="block">{{ search[0].id }}</div>
+            {% else %}
+                <p>user not found</p>
+            {% endif %}
+        </div>
     </div>
 {% endblock %}

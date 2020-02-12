@@ -1,0 +1,8 @@
+<div id="users" class="con">
+    USERS
+    {% for user in users %}
+    <div class="block">{{ user.name }}</div>
+    {% else %}
+    <p>no users</p>
+    {% endfor %}
+</div>

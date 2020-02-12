@@ -1,41 +1,39 @@
 body {
-    display: flex;
     margin: 0;
     padding: 0;
     font-family: Arial;
 }
-#users {
+.width {
+    width: auto !important;
+}
+#main {
+    display: flex;
+    color: white;
+}
+.con {
     display: flex;
     flex-direction: column;
     text-align: center;
     align-items: center;
+}
+.block {
+    margin-top: 10px;
+    height: 20px;
+    width: 80%;
+    border: solid 1px;
+    background-color: white;
+    color: black;
+}
+#users {
     height: 100vh;
     width: 20vw;
-    border-right: solid 1px;
-    background-color: #55cefa;
+    border-right: solid 1px black;
+    background-color: #292e38;
 }
 #messages {
-    display: flex;
-    flex-direction: column;
-    text-align: center;
-    align-items: center;
     height: 100vh;
     width: 80vw;
-    background-color: #33a9d4;
-}
-.user {
-    margin-top: 10px;
-    height: 20px;
-    width: 80%;
-    border: solid 1px;
-    background-color: white;
-}
-.message {
-    margin-top: 10px;
-    height: 20px;
-    width: 80%;
-    border: solid 1px;
-    background-color: white;
+    background-color: #1b2029;
 }
 #profile {
     display: flex;
@@ -44,5 +42,5 @@ body {
     align-items: center;
     height: 100vh;
     width: 80vw;
-    background-color: #33a9d4;
+    background-color: #1b2029;
 }
