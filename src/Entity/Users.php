@@ -7,7 +7,7 @@ use Symfony\Component\Security\Core\User\UserInterface;
 
 /**
  * Users
- * @ORM\Entity(repositoryClass="App\Repository\CabronesRepository")
+ * @ORM\Entity(repositoryClass="App\Repository\UserRepository")
  * @ORM\Table(name="users", uniqueConstraints={@ORM\UniqueConstraint(name="user", columns={"name"}), @ORM\UniqueConstraint(name="email", columns={"email"})})
  * @ORM\Entity
  */
@@ -30,28 +30,26 @@ class Users implements UserInterface
     private $name;
 
     /**
-     * @var string|null
+     * @var string
      *
-     * @ORM\Column(name="email", type="string", length=100, nullable=true, options={"default"="NULL"})
+     * @ORM\Column(name="email", type="string", length=100, nullable=true)
      */
-    private $email = 'NULL';
+    private $email;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="password", type="string", length=60, nullable=false, options={"fixed"=true})
+     * @ORM\Column(name="password", type="string", length=4096, nullable=false, options={"fixed"=true})
      */
     private $password;
 
     /**
-     * @var int|null
+     * @var int
      *
-     * @ORM\Column(name="role", type="integer", nullable=true, options={"default"="NULL"})
+     * @ORM\Column(name="role", type="integer", nullable=true)
      */
-    private $role = 'NULL';
+    private $role = 0;
 
-    /**
-     */
     private $plainPassword;
 
     private $roles = [];
