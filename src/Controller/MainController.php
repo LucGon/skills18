@@ -28,11 +28,17 @@ class MainController extends AbstractController
     public function search()
     {
         $em = $this->getDoctrine()->getManager();
-        $resultado = $em->getRepository(Users::class)->findBy(['name' => $_POST['search']]);
+        $resultado = $em->getRepository(Users::class)->findOneBy(['name' => $_POST['search']]);
+        if ($resultado) {
+            $messages = $em->getRepository(Messages::class)->findBy(['author' => $resultado->getId()]);
+            $search =  [$resultado, $messages];
+        } else {
+            $search = false;
+        }
         return $this->render('main/search.html.twig', [
             'controller_name' => 'MainController',
             'users' => $em->getRepository(Users::Class)->findAll(),
-            'search' => $resultado,
+            'search' => $search
         ]);
     }
 }

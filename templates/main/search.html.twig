@@ -4,15 +4,24 @@
 {% block body %}
     {% include 'header.html' %}
     <div id="main">
-        {% include 'sidebar.html' %}
-        <div id="profile" class="con">
-            {% if search %}
-                PROFILE
-                <div class="block">{{ search[0].name }}</div>
-                <div class="block">{{ search[0].id }}</div>
-            {% else %}
-                <p>user not found</p>
-            {% endif %}
-        </div>
+
+        {% if search %}
+            {% include 'profile.html' %}
+            <div id="messages" class="con">
+                {% if search %}
+                    MESSAGES
+                    {% for message in search[1] %}
+                        <div class="block">{{ message.author.name }}: {{ message.content }}</div>
+                    {% else %}
+                        <p>no messages</p>
+                    {% endfor %}
+                {% endif %}
+            </div>
+        {% else %}
+            {% include 'sidebar.html' %}
+            <div id="messages" class="con">
+                <p>profile not found</p>
+            </div>
+        {% endif %}
     </div>
 {% endblock %}
